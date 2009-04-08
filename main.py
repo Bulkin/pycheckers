@@ -1,0 +1,1 @@
+/home/bulkin/src/py/checkers/main.py
