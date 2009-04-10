@@ -23,9 +23,9 @@ class BoardView(gtk.DrawingArea):
         self.set_events(gtk.gdk.EXPOSURE_MASK | gtk.gdk.BUTTON_PRESS_MASK)
 
         #TODO: use settings
-        self.tile_w = gtk.gdk.pixbuf_new_from_file("tile_w.jpg")
-        self.tile_b = gtk.gdk.pixbuf_new_from_file("tile_b.jpg")
-        self.selector = gtk.gdk.pixbuf_new_from_file("selector.png")
+        self.tile_w = gtk.gdk.pixbuf_new_from_file("images/tile_w.jpg")
+        self.tile_b = gtk.gdk.pixbuf_new_from_file("images/tile_b.jpg")
+        self.selector = gtk.gdk.pixbuf_new_from_file("images/selector.png")
 
         self.checkers = Checkers()
         self.checkers.setSelected((2,5))
