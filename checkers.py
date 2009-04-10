@@ -63,17 +63,19 @@ class Checkers:
         x = piece[0]
         y = piece[1]
         # is white's turn
-        wh = abs(self.array[piece]) == self.WH
+        wh = (abs(self.array[piece]) == self.WH)
+        op_piece = (abs(self.array[piece])) % 2 + 1
         # is king
         k = self.array[piece] < 0
         
         index = len(self.m)
 
         for i in [-1,1]:
+            # bounds check
+            if y + i < 0 or y + i > 7:
+                continue
             # men can't move backwards
             if not k:
-                if y + i < 0 or y + i > 7:
-                    continue
                 if wh and i == -1:
                     continue
                 if not wh and i == 1:
@@ -90,7 +92,7 @@ class Checkers:
                         self.m.append([piece])
                     self.m[index].append((x+ii,y+i))
                 # enemy piece ahead
-                elif (abs(self.array[(x+ii,y+i)]) == self.WH) != wh:
+                elif abs(self.array[(x+ii,y+i)]) == op_piece:
                     # out of bounds
                     if (x + ii*2 < 0) or (x + ii*2 > 7):
                         continue
