@@ -138,3 +138,6 @@ class BoardView(gtk.DrawingArea):
         else:
             self.checkers.setSelected(target)
         self.exposeEvent(None, None)
+
+    def reset(self):
+        self.checkers = Checkers()
