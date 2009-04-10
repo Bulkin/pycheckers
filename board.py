@@ -75,14 +75,14 @@ class BoardView(gtk.DrawingArea):
             window.draw_arc(gc, True, s*x+s/10, s*y+s/10, s - s/5, s - s/5, 0, 65*360)
             if type < 0:
                 gc.set_foreground(self.color_black)
-                window.draw_arc(gc, True, s*x+3*s/20, s*y+3*s/20, s/2, s/2, 0, 65*360)
+                window.draw_arc(gc, True, s*x+s/4, s*y+s/4, s/2, s/2, 0, 65*360)
         elif abs(type) == Checkers.BL:
             gc.set_foreground(self.color_black)
             window.draw_arc(gc, True, s*x+s/10, s*y+s/10, s - s/5, s - s/5,
                             0, 65*360)
             if type < 0:
                 gc.set_foreground(self.color_white)
-                window.draw_arc(gc, True, s*x+3*s/20, s*y+3*s/20, s/10, s/2, 0, 65*360)
+                window.draw_arc(gc, True, s*x+s/4, s*y+s/4, s/2, s/2, 0, 65*360)
 
     def __drawPieces(self, window, gc, rect):
         for i in range(8):
