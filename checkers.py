@@ -7,7 +7,9 @@ class Checkers:
 
     def __init__(self):
         self.array = {}
+        self.resetBoard()
 
+    def resetBoard(self):
         self.countWH = 0
         self.countBL = 0
         for i in range(8):
@@ -23,17 +25,18 @@ class Checkers:
                     self.array[(ii,i)] = Checkers.BL
                     self.countBL+=1
                     
-        self.turn = Checkers.BL
-        # test
-        self.array[(3,4)] = self.WHK
-        self.array[(4,3)] = self.WHK
-        self.countWH += 2
-
         self.m = []
         self.turn = self.BL
-
+        self.selected = (4,5)
         self.__checkBoard()
-        
+
+    def cleanBoard(self):
+        for i in range(8):
+            for ii in range(8):
+                if not (i+ii) % 2:
+                    continue
+                self.array[(ii,i)] = self.FREE
+
     def checkTile(self, x, y):
         return self.array[(x,y)]
     
@@ -53,8 +56,6 @@ class Checkers:
         self.noeat = True
         for i in self.array:
             self.__findMoves(i)
-        #debug
-        print self.m
 
     def __findMoves(self, piece):
         if abs(self.array[piece]) != self.turn:
@@ -154,6 +155,6 @@ class Checkers:
                 self.__checkBoard()
         # king
         if dest[1] == 0 or dest[1] == 7:
-            self.array[dest] *= -abs(self.array[dest])
+            self.array[dest] = -abs(self.array[dest])
         return dest
         
